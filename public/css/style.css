@@ -1,0 +1,186 @@
+/* public/css/style.css */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #d32f2f;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 10px;
+}
+
+main {
+  padding: 20px;
+}
+
+form {
+  background-color: white;
+  padding: 15px;
+  border-radius: 5px;
+  max-width: 600px;
+  margin: 0 auto 20px auto;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+form label {
+  display: block;
+  margin-top: 10px;
+}
+
+form input, form select, form textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+}
+
+form button {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: #d32f2f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.radio-group label {
+  display: inline-block;
+  margin-right: 15px;
+}
+
+#filterSection {
+  background-color: white;
+  padding: 15px;
+  margin: 20px auto;
+  max-width: 600px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#filterSection form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+#filterSection label {
+  flex: 1;
+  min-width: 80px;
+}
+
+#filterSection select {
+  flex: 2;
+}
+
+/* Donor Cards Container */
+.donor-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+/* Individual Donor Card */
+.donor-card {
+  background-color: #fff;
+  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+/* Profile Pic in Circle */
+.profile-pic-circle {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 10px auto;
+}
+
+/* Donor Name & Info */
+.donor-name {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.donor-subtitle {
+  color: #777;
+  margin: 5px 0;
+}
+
+.donor-info {
+  font-size: 0.9rem;
+  margin: 3px 0;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ul li {
+  background-color: white;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Slideshow container */
+.slideshow-container {
+  position: relative;
+  max-width: 400px;
+  margin-top: 10px;
+}
+
+/* Each slide (image or video) */
+.mySlide {
+  display: none;
+  text-align: center;
+}
+
+/* Next & Prev buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  padding: 12px;
+  margin-top: -22px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 18px;
+  background-color: rgba(0,0,0,0.5);
+  user-select: none;
+}
+.next {
+  right: 0;
+}
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Images & Videos in slides smaller */
+.mySlide img,
+.mySlide video {
+  max-width: 300px;
+  max-height: 300px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}

@@ -1,0 +1,13 @@
+request blood, register donor page ----
+
+dropdown menu - district, state
+any health issues - radio button {if yes - define input}
+
+-----------------------
+
+health issues, and previously donated option of the donor should appear on the home page 
+also while registering as a donor their should be an option f uploading their pic in square format and that pic should appear on the home page too
+
+------------------------
+
+ask first if the user wants to donate the blood or they are in need of blood for emergency on home page
