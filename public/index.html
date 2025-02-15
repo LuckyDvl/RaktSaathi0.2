@@ -6,7 +6,7 @@
   <title>Blood Donation App - Home</title>
   <link rel="stylesheet" href="css/style.css" />
   <script>
-    // Immediately redirect to login if no token is found.
+    // If no token is in localStorage, redirect to login
     if (!localStorage.getItem('token')) {
       window.location.href = "login.html";
     }
@@ -74,6 +74,13 @@
   
   <!-- Modal and Logout Script -->
   <script>
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', function(){
+      localStorage.removeItem('token');
+      localStorage.removeItem('userId');
+      window.location.href = "login.html";
+    });
+    
     // Global variable for user type: "need" or "donate"
     window.userType = "";
     
@@ -87,14 +94,6 @@
       window.userType = "donate";
       document.getElementById('userTypeModal').style.display = 'none';
       alert("Please select your State and District to view blood requests in your area.");
-    });
-    
-    // Logout functionality
-    document.getElementById('logoutBtn').addEventListener('click', function(){
-      localStorage.removeItem('token');
-      localStorage.removeItem('userId');
-      // Optionally, you could also clear other user-related info from localStorage.
-      window.location.href = "login.html";
     });
   </script>
 </body>

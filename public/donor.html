@@ -5,15 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Register as Donor</title>
   <link rel="stylesheet" href="css/style.css">
+  <script>
+    if (!localStorage.getItem('token')) {
+      window.location.href = "login.html";
+    }
+  </script>
 </head>
 <body>
   <header>
     <h1>Register as a Blood Donor</h1>
     <nav>
-      <a href="index.html">Home</a> | 
-      <a href="donor.html">Register as Donor</a> | 
-      <a href="request.html">Request Blood</a> | 
-      <a href="chat.html">Chat</a>
+      <a href="index.html">Home</a> |
+      <a href="donor.html">Register as Donor</a> |
+      <a href="request.html">Request Blood</a> |
+      <a href="chat.html">Chat</a> |
+      <button id="logoutBtn">Logout</button>
     </nav>
   </header>
   <main>
@@ -53,7 +59,6 @@
         <label for="street">Street:</label>
         <input type="text" id="street" name="street" required>
         
-        <!-- State first, then District -->
         <label for="stateSelect">State:</label>
         <select id="stateSelect" name="state" required>
           <option value="">Select State</option>
@@ -109,7 +114,12 @@
     <div id="donorMsg"></div>
     
     <script>
-      // Populate hidden userId field from localStorage
+      document.getElementById('logoutBtn').addEventListener('click', function(){
+        localStorage.removeItem('token');
+        localStorage.removeItem('userId');
+        window.location.href = "login.html";
+      });
+      
       window.addEventListener('load', function() {
         const userIdField = document.getElementById('userId');
         const storedUserId = localStorage.getItem('userId');
@@ -118,7 +128,6 @@
         }
       });
       
-      // State-District mapping for donor form
       const stateDistrictMapping = {
         "Andhra Pradesh": ["Anantapur", "Chittoor", "East Godavari", "Guntur"],
         "Uttar Pradesh": ["Agra", "Aligarh", "Lucknow", "Varanasi"],
@@ -151,7 +160,6 @@
       
       populateStateDistrict();
       
-      // Health issues radio button logic
       document.getElementsByName("healthIssueRadio").forEach(radio => {
         radio.addEventListener('change', function() {
           const container = document.getElementById('healthDescriptionContainer');
@@ -164,7 +172,6 @@
         });
       });
       
-      // Donor form submission
       document.getElementById('donorForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const form = document.getElementById('donorForm');

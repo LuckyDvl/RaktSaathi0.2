@@ -5,15 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Request Blood</title>
   <link rel="stylesheet" href="css/style.css" />
+  <script>
+    if (!localStorage.getItem('token')) {
+      window.location.href = "login.html";
+    }
+  </script>
 </head>
 <body>
   <header>
     <h1>Request Blood</h1>
     <nav>
-      <a href="index.html">Home</a> | 
-      <a href="donor.html">Register as Donor</a> | 
-      <a href="request.html">Request Blood</a> | 
-      <a href="chat.html">Chat</a>
+      <a href="index.html">Home</a> |
+      <a href="donor.html">Register as Donor</a> |
+      <a href="request.html">Request Blood</a> |
+      <a href="chat.html">Chat</a> |
+      <button id="logoutBtn">Logout</button>
     </nav>
   </header>
   <main>
@@ -97,7 +103,12 @@
     <div id="requestMsg"></div>
     
     <script>
-      // Populate hidden userId field from localStorage
+      document.getElementById('logoutBtn').addEventListener('click', function(){
+        localStorage.removeItem('token');
+        localStorage.removeItem('userId');
+        window.location.href = "login.html";
+      });
+      
       window.addEventListener('load', function() {
         const userIdField = document.getElementById('userId');
         const storedUserId = localStorage.getItem('userId');
@@ -106,7 +117,6 @@
         }
       });
       
-      // Minimal state-district mapping for request form
       const stateDistrictMapping = {
         "Andhra Pradesh": ["Anantapur", "Chittoor", "Guntur"],
         "Uttar Pradesh": ["Agra", "Aligarh", "Lucknow", "Varanasi"],

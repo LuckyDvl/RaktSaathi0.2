@@ -18,3 +18,5 @@ add warning and terms and conditions
 -------------------------------------
 
 the first thing while opening the home page it should first open login or signup page but once logged in it should not ask for that again untill the session is ended or untill the user has just logged out of the site, add a login page first and give login access to username "errorTeam" and password "123"
+
+chat should come and go to users
