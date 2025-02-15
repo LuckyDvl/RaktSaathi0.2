@@ -5,6 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Blood Donation App - Home</title>
   <link rel="stylesheet" href="css/style.css" />
+  <script>
+    // Immediately redirect to login if no token is found.
+    if (!localStorage.getItem('token')) {
+      window.location.href = "login.html";
+    }
+  </script>
 </head>
 <body>
   <header>
@@ -13,7 +19,8 @@
       <a href="index.html">Home</a> | 
       <a href="donor.html">Register as Donor</a> | 
       <a href="request.html">Request Blood</a> | 
-      <a href="chat.html">Chat</a>
+      <a href="chat.html">Chat</a> | 
+      <button id="logoutBtn">Logout</button>
     </nav>
   </header>
   
@@ -65,13 +72,8 @@
   
   <script src="js/script.js"></script>
   
-  <!-- Modal Script -->
+  <!-- Modal and Logout Script -->
   <script>
-    // Check if user is logged in; if not, redirect to login.html
-    if (!localStorage.getItem('token')) {
-      window.location.href = "login.html";
-    }
-    
     // Global variable for user type: "need" or "donate"
     window.userType = "";
     
@@ -85,6 +87,14 @@
       window.userType = "donate";
       document.getElementById('userTypeModal').style.display = 'none';
       alert("Please select your State and District to view blood requests in your area.");
+    });
+    
+    // Logout functionality
+    document.getElementById('logoutBtn').addEventListener('click', function(){
+      localStorage.removeItem('token');
+      localStorage.removeItem('userId');
+      // Optionally, you could also clear other user-related info from localStorage.
+      window.location.href = "login.html";
     });
   </script>
 </body>
