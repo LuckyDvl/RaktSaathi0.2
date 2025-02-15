@@ -1,4 +1,3 @@
-<!-- public/donor.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +12,8 @@
     <nav>
       <a href="index.html">Home</a> | 
       <a href="donor.html">Register as Donor</a> | 
-      <a href="request.html">Request Blood</a>
+      <a href="request.html">Request Blood</a> | 
+      <a href="chat.html">Chat</a>
     </nav>
   </header>
   <main>
@@ -71,6 +71,9 @@
         <input type="tel" id="altMobile" name="altMobile">
       </fieldset>
       
+      <!-- Hidden userId field -->
+      <input type="hidden" id="userId" name="userId">
+      
       <!-- Health Issues -->
       <fieldset>
         <legend>Health Issues</legend>
@@ -106,15 +109,22 @@
     <div id="donorMsg"></div>
     
     <script>
-      // State-District mapping (subset for example)
+      // Populate hidden userId field from localStorage
+      window.addEventListener('load', function() {
+        const userIdField = document.getElementById('userId');
+        const storedUserId = localStorage.getItem('userId');
+        if (storedUserId) {
+          userIdField.value = storedUserId;
+        }
+      });
+      
+      // State-District mapping for donor form
       const stateDistrictMapping = {
         "Andhra Pradesh": ["Anantapur", "Chittoor", "East Godavari", "Guntur"],
         "Uttar Pradesh": ["Agra", "Aligarh", "Lucknow", "Varanasi"],
         "Maharashtra": ["Mumbai", "Pune", "Nagpur", "Nashik"]
-        // Add more as needed
       };
       
-      // Populate state & district in donor form
       function populateStateDistrict() {
         const stateSelect = document.getElementById('stateSelect');
         const districtSelect = document.getElementById('districtSelect');
@@ -141,7 +151,7 @@
       
       populateStateDistrict();
       
-      // Show/hide health description
+      // Health issues radio button logic
       document.getElementsByName("healthIssueRadio").forEach(radio => {
         radio.addEventListener('change', function() {
           const container = document.getElementById('healthDescriptionContainer');
@@ -154,7 +164,7 @@
         });
       });
       
-      // Submit donor form with file upload
+      // Donor form submission
       document.getElementById('donorForm').addEventListener('submit', function(e) {
         e.preventDefault();
         const form = document.getElementById('donorForm');

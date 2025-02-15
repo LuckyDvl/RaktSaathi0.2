@@ -1,4 +1,3 @@
-<!-- public/index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,9 +12,20 @@
     <nav>
       <a href="index.html">Home</a> | 
       <a href="donor.html">Register as Donor</a> | 
-      <a href="request.html">Request Blood</a>
+      <a href="request.html">Request Blood</a> | 
+      <a href="chat.html">Chat</a>
     </nav>
   </header>
+  
+  <!-- Modal Popup -->
+  <div id="userTypeModal" class="modal">
+    <div class="modal-content">
+      <h2>Are you in need of blood?</h2>
+      <p>Or are you interested in donating blood?</p>
+      <button id="needBloodBtn">In Need of Blood</button>
+      <button id="donateBloodBtn">Interested in Donating Blood</button>
+    </div>
+  </div>
   
   <main>
     <!-- Filter Section -->
@@ -37,22 +47,45 @@
     </section>
     
     <!-- Registered Donors Section -->
-    <section id="donorsSection">
+    <section id="donorsSection" style="display:none;">
       <h2>Registered Donors</h2>
       <div id="donorList">
-        <!-- Donor details will be loaded here via script.js -->
+        <!-- Donor cards will be loaded here -->
       </div>
     </section>
     
     <!-- Blood Requests Section -->
-    <section id="requestsSection">
+    <section id="requestsSection" style="display:none;">
       <h2>Blood Requests</h2>
       <div id="requestList">
-        <!-- Blood request details will be loaded here via script.js -->
+        <!-- Blood request cards will be loaded here -->
       </div>
     </section>
   </main>
   
   <script src="js/script.js"></script>
+  
+  <!-- Modal Script -->
+  <script>
+    // Check if user is logged in; if not, redirect to login.html
+    if (!localStorage.getItem('token')) {
+      window.location.href = "login.html";
+    }
+    
+    // Global variable for user type: "need" or "donate"
+    window.userType = "";
+    
+    document.getElementById('needBloodBtn').addEventListener('click', function(){
+      window.userType = "need";
+      document.getElementById('userTypeModal').style.display = 'none';
+      alert("Please select your State and District to view donors available in your area.");
+    });
+    
+    document.getElementById('donateBloodBtn').addEventListener('click', function(){
+      window.userType = "donate";
+      document.getElementById('userTypeModal').style.display = 'none';
+      alert("Please select your State and District to view blood requests in your area.");
+    });
+  </script>
 </body>
 </html>

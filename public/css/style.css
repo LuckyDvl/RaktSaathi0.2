@@ -24,7 +24,7 @@ main {
 }
 
 form {
-  background-color: white;
+  background-color: #fff;
   padding: 15px;
   border-radius: 5px;
   max-width: 600px;
@@ -59,8 +59,30 @@ form button {
   margin-right: 15px;
 }
 
+/* Modal Styles */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+/* Filter Section Styles */
 #filterSection {
-  background-color: white;
+  background-color: #fff;
   padding: 15px;
   margin: 20px auto;
   max-width: 600px;
@@ -102,19 +124,22 @@ form button {
   text-align: center;
 }
 
-/* Profile Pic in Circle */
+.donor-pic-wrapper {
+  margin-bottom: 10px;
+}
+
+/* Profile Pic as Circle */
 .profile-pic-circle {
   width: 100px;
   height: 100px;
   object-fit: cover;
   border-radius: 50%;
   display: block;
-  margin: 0 auto 10px auto;
+  margin: 0 auto;
 }
 
-/* Donor Name & Info */
 .donor-name {
-  margin: 0;
+  margin: 10px 0 5px;
   font-size: 1.2rem;
   font-weight: bold;
 }
@@ -129,24 +154,40 @@ form button {
   margin: 3px 0;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+/* Request Cards Container */
+.request-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
 }
 
-ul li {
-  background-color: white;
-  margin: 10px 0;
-  padding: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+/* Individual Request Card */
+.request-card {
+  background-color: #fff;
+  width: 280px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+.request-name {
+  margin: 10px 0 5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.request-info {
+  font-size: 0.9rem;
+  margin: 3px 0;
 }
 
 /* Slideshow container */
 .slideshow-container {
   position: relative;
-  max-width: 400px;
-  margin-top: 10px;
+  max-width: 260px;
+  margin: 10px auto 0;
 }
 
 /* Each slide (image or video) */
@@ -154,33 +195,41 @@ ul li {
   display: none;
   text-align: center;
 }
+.mySlide img,
+.mySlide video {
+  max-width: 260px;
+  max-height: 260px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
 
-/* Next & Prev buttons */
+/* Prev & Next buttons */
 .prev, .next {
-  cursor: pointer;
   position: absolute;
   top: 50%;
-  padding: 12px;
-  margin-top: -22px;
+  transform: translateY(-50%);
+  padding: 8px;
   color: #fff;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
   background-color: rgba(0,0,0,0.5);
+  border-radius: 3px;
+  cursor: pointer;
   user-select: none;
 }
+.prev {
+  left: 5px;
+}
 .next {
-  right: 0;
+  right: 5px;
 }
 .prev:hover, .next:hover {
   background-color: rgba(0,0,0,0.8);
 }
 
-/* Images & Videos in slides smaller */
-.mySlide img,
-.mySlide video {
-  max-width: 300px;
-  max-height: 300px;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto;
+/* General list reset */
+ul {
+  list-style: none;
+  padding: 0;
 }
